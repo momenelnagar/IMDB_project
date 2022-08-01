@@ -1,0 +1,93 @@
+select *
+from [sql tot].[dbo].[IMBD]
+
+alter table [sql tot].[dbo].[IMBD]
+drop column Poster_Link
+
+alter table [sql tot].[dbo].[IMBD]
+alter column IMDB_Rating float(5)
+
+delete 
+from [sql tot].[dbo].[IMBD]
+where Released_Year is null
+
+select Genre ,count(Genre) as counts
+from [sql tot].[dbo].[IMBD]
+group by Genre
+order by counts desc
+
+select Released_Year, Count(Movies_Title) as counts
+from [sql tot].[dbo].[IMBD]
+group by Released_Year
+order by Released_Year desc
+
+select Star1, sum(Gross) as total
+from [sql tot].[dbo].[IMBD]
+group by Star1
+order by total desc
+
+select Star1, Avg(IMDB_Rating) as total
+from [sql tot].[dbo].[IMBD]
+group by Star1
+order by total desc
+
+select Star1, sum(No_of_Votes) as total
+from [sql tot].[dbo].[IMBD]
+group by Star1
+order by total desc
+
+select Director, sum(Gross) as total
+from [sql tot].[dbo].[IMBD]
+group by Director
+order by total desc
+
+select Director, avg(IMDB_Rating) as total 
+from [sql tot].[dbo].[IMBD]
+group by Director
+order by total desc
+
+select Director, sum(No_of_Votes) as total
+from [sql tot].[dbo].[IMBD]
+group by Director
+order by total desc
+
+select Director, count(Movies_Title) as total
+from [sql tot].[dbo].[IMBD]
+group by Director
+order by total desc
+
+select Star1, count(Movies_Title) as total
+from [sql tot].[dbo].[IMBD]
+group by Star1
+order by total desc
+
+select Movies_Title, Genre, max(Runtime) as longest
+from [sql tot].[dbo].[IMBD]
+group by Movies_Title, Genre
+order by longest desc
+
+select Certificate, count(Certificate) as total
+from [sql tot].[dbo].[IMBD]
+group by Certificate
+order by total desc
+
+select *
+from [sql tot].[dbo].[IMBD]
+where Released_Year = '1999'
+
+Select *
+from [sql tot].[dbo].[IMBD]
+where Star1 like 'g%'
+
+select Movies_Title , Director, IMDB_Rating, Star1
+from [sql tot].[dbo].[IMBD]
+where IMDB_Rating > 8
+
+select * 
+from [sql tot].[dbo].[IMBD]
+where Runtime <100
+
+select *
+from [sql tot].[dbo].[IMBD]
+where Gross > 400000000
+
